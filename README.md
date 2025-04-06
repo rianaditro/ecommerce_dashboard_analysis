@@ -11,12 +11,9 @@ source env/bin/activate       # Mac/Linux
 
 # Install dependencies
 pip install -r requirements.txt
-
-# Masuk ke sub folder dimana file streamlit berada
-cd dashboard
 ```
 
 ## Run steamlit app
 ```
-streamlit run main.py
+streamlit run dashboard/main.py
 ```

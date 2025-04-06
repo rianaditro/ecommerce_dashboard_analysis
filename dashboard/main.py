@@ -4,7 +4,7 @@ import pandas as pd
 from numerize.numerize import numerize
 
 def load_data():
-    orders_df = pd.read_csv('../data/dashboard/orders_analyzed.csv')
+    orders_df = pd.read_csv('data/dashboard/orders_analyzed.csv')
     orders_df['order_purchase_timestamp'] = pd.to_datetime(orders_df['order_purchase_timestamp'])
     orders_df['order_purchase_timestamp'] = orders_df['order_purchase_timestamp'].dt.date
 
@@ -15,14 +15,14 @@ def load_data():
     # add state count
     orders_df['state_count'] = orders_df['customer_state'].map(orders_df['customer_state'].value_counts())
 
-    order_items_df = pd.read_csv('../data/dashboard/order_items_analyzed.csv')
+    order_items_df = pd.read_csv('data/dashboard/order_items_analyzed.csv')
     order_items_df['shipping_limit_date'] = pd.to_datetime(order_items_df['shipping_limit_date'])
     order_items_df['shipping_limit_date'] = order_items_df['shipping_limit_date'].dt.date
 
     return orders_df, order_items_df
 
 def load_geodata():
-    geodata_df = pd.read_csv('../data/dashboard/geolocation_dataset.csv')
+    geodata_df = pd.read_csv('data/dashboard/geolocation_dataset.csv')
     geodata_df = geodata_df.drop_duplicates(subset=['geolocation_state'], keep='first')
     geodata_df = geodata_df[["geolocation_state", "geolocation_lat", "geolocation_lng"]]
     geodata_df.columns = ["customer_state", "lat", "lon"]
